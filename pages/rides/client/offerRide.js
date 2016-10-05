@@ -23,7 +23,7 @@ Template.offerRideForm.events({
     // next we get the id of the logged in user
     var who = Meteor.userId();
     // finally we put all of this information into a JSON object
-    var ride = {name,cell,date,time,destination,origin,who};
+    var ride = {name:name,cell:cell,date:date,time:time,destination:destination,origin:origin,who:who};
     // we print out the object just to make sure its OK
     console.dir(ride);
     // and we insert the object into the Rides collection on the server

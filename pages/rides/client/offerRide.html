@@ -1,0 +1,54 @@
+<template name="offerRide">
+  {{#if currentUser}}
+    {{> offerRideForm}}
+  {{else}}
+    You must log in to use the ride board
+  {{/if}}
+</template>
+
+
+<template name="offerRideForm">
+
+  <div class="jumbotron">
+     <h1>Brandeis Ride Board</h1>
+     <p>Please use this form to offer a ride</p>
+  </div>
+
+  <h1>Here are the rides currently being offered</h1>
+  <ul>
+    {{#each r in rides}}
+      {{> showRide r=r}}
+    {{/each}}
+  </ul>
+
+  <h1> Here is where you can offer your own ride</h1>
+  <form id="rideform">
+    What is your name?
+    <input type="text" id="name"><br>
+
+    What is your cell phone number?
+    <input type="text" id="cell"><br>
+
+    When are you going?
+    <input type="date" id="date"> <input type="time" id="time"><br/>
+
+    Where are you going to?
+    <input type="text" id="destination"><br/>
+
+    Where are you leaving from?
+    <input type="text" id="origin"><br/>
+
+    <input type="submit" value="Share your ride!">
+  </form>
+</template>
+
+<template name="showRide">
+  <li>{{r.name}} {{r.cell}}
+       is going to {{r.destination}}
+       and leaving from {{r.origin}}
+       at {{r.date}} {{r.time}}
+       {{#if isOwner}}
+          <button id="delete">delete</button>
+       {{/if}}
+  </li>
+</template>
